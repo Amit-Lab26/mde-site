@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amit-lab26.github.io/mde-site/sitemap.xml
