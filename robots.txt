@@ -1,4 +1,17 @@
+# robots.txt for MDE — Market Data Extraction
+# https://amit-lab26.github.io/mde-site/
+
+# Allow all crawlers to access the site
 User-agent: *
 Allow: /
 
+# Disallow common spam/junk paths (if they exist)
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Crawl-delay to be respectful to server resources
+Crawl-delay: 1
+
+# Sitemap location for search engine discovery
 Sitemap: https://amit-lab26.github.io/mde-site/sitemap.xml
