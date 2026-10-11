@@ -20,3 +20,23 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
   });
 });
+
+function setActiveNav() {
+  const currentPath = window.location.pathname;
+  const filename = currentPath.split('/').pop();
+  const navLinks = document.querySelectorAll('.nav a:not(.nav-cta)');
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    link.classList.remove('active');
+
+    if ((filename === '' || filename === 'index.html') && href === 'index.html') {
+      link.classList.add('active');
+    } else if (filename === href) {
+      link.classList.add('active');
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', setActiveNav);
+setActiveNav();
