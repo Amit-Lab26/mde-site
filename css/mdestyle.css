@@ -415,10 +415,6 @@ h2 em {
 .signal-one { top: 20%; right: 17%; transform: rotate(25deg); }
 .signal-two { bottom: 23%; left: 18%; transform: rotate(-20deg); }
 
-/* ============================================
-   CONTINUOUS INFINITE TICKER
-   ============================================ */
-
 /* TICKER */
 .ticker {
   width: 100%;
@@ -427,6 +423,7 @@ h2 em {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 18px 0;
+  position: relative; /* Contain layout */
 }
 
 .ticker-track {
@@ -440,7 +437,12 @@ h2 em {
   letter-spacing: 0.16em;
 
   animation: ticker 25s linear infinite;
+  
+  /* Performance boosts to prevent stuttering */
   will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform: translateZ(0);
 }
 
 .ticker-track span,
@@ -454,18 +456,17 @@ h2 em {
 }
 
 @keyframes ticker {
-  from {
+  0% {
     transform: translateX(0);
   }
-
-  to {
+  100% {
     transform: translateX(-50%);
   }
 }
 
 @media (max-width: 600px) {
   .ticker-track {
-    gap: 1px;
+    gap: 16px; /* Avoid gap: 1px which causes text squishing/shaking */
     font-size: 9px;
     letter-spacing: 0.08em;
     animation-duration: 18s;
@@ -478,6 +479,7 @@ h2 em {
     animation: none;
   }
 }
+
 /* Reduce the empty space below the ticker */
 .ticker + section {
   padding-top: 60px;
