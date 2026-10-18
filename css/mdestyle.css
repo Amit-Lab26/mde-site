@@ -423,7 +423,6 @@ h2 em {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 18px 0;
-  position: relative; /* Contain layout */
 }
 
 .ticker-track {
@@ -431,28 +430,33 @@ h2 em {
   width: max-content;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 28px;
-
-  font: 500 10px 'DM Mono', monospace;
-  letter-spacing: 0.16em;
 
   animation: ticker 25s linear infinite;
-  
-  /* Performance boosts to prevent stuttering */
   will-change: transform;
   backface-visibility: hidden;
   perspective: 1000px;
   transform: translateZ(0);
 }
 
-.ticker-track span,
-.ticker-track i {
+/* Each half group */
+.ticker-group {
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
 }
 
-.ticker i {
+.ticker-track span {
+  font: 500 10px 'DM Mono', monospace;
+  letter-spacing: 0.16em;
+  flex-shrink: 0;
+  padding-right: 28px; /* Consistent spacing after text */
+}
+
+.ticker-track i {
   color: var(--cyan);
   font-style: normal;
+  flex-shrink: 0;
+  padding-right: 28px; /* Consistent spacing after the symbol */
 }
 
 @keyframes ticker {
@@ -465,10 +469,13 @@ h2 em {
 }
 
 @media (max-width: 600px) {
-  .ticker-track {
-    gap: 16px; /* Avoid gap: 1px which causes text squishing/shaking */
+  .ticker-track span,
+  .ticker-track i {
+    padding-right: 16px;
     font-size: 9px;
     letter-spacing: 0.08em;
+  }
+  .ticker-track {
     animation-duration: 18s;
   }
 }
@@ -486,7 +493,6 @@ h2 em {
   margin-top: 0;
 }
 
-/* Mobile spacing */
 @media (max-width: 600px) {
   .ticker + section {
     padding-top: 40px;
