@@ -438,10 +438,13 @@ h2 em {
     animation-play-state: paused;
   }
  
-  .ticker__group {
-    display: flex;
-    flex-shrink: 0;
-  }
+.ticker__group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-shrink: 0;
+  min-width: 100vw;
+}
  
   .ticker__item {
     font-family: "Space Mono", "Roboto Mono", Consolas, monospace;
