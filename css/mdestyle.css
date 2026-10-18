@@ -427,7 +427,6 @@ h2 em {
     color: var(--fg);
   }
  
-  /* Two identical groups; moving the track -50% loops seamlessly */
   .ticker__track {
     display: flex;
     width: max-content;
@@ -438,13 +437,14 @@ h2 em {
     animation-play-state: paused;
   }
  
-.ticker__group {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-shrink: 0;
-  min-width: 100vw;
-}
+  /* Each group is at least one screen wide, so no gap appears at the loop point */
+  .ticker__group {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-shrink: 0;
+    min-width: 100vw;
+  }
  
   .ticker__item {
     font-family: "Space Mono", "Roboto Mono", Consolas, monospace;
@@ -455,20 +455,21 @@ h2 em {
     white-space: nowrap;
   }
  
-  .ticker__item::after {
-    content: "\2726"; /* ✦ */
+  .ticker__group i {
+    font-style: normal;
     color: var(--accent);
     margin: 0 2.4rem;
   }
  
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-25%); }
-}
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
  
   @media (prefers-reduced-motion: reduce) {
     .ticker__track { animation-duration: 90s; }
   }
+
 /* ============================================
    INTRO SECTION
    ============================================ */
