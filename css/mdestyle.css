@@ -13,6 +13,10 @@
   --lime: #c6ff55;
   --violet: #9b7cff;
   --max: 1240px;
+   --fg: #f2f5f9;
+    --accent: #5cf2ff;
+    --line: rgba(255, 255, 255, 0.12);
+    --speed: 30s; /* lower = faster */
 }
 
 /* ============================================
