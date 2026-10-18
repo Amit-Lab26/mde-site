@@ -419,37 +419,32 @@ h2 em {
    CONTINUOUS INFINITE TICKER
    ============================================ */
 
+/* TICKER */
 .ticker {
   width: 100%;
   overflow: hidden;
+  white-space: nowrap;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 18px 0;
-  white-space: nowrap;
 }
 
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: ticker-scroll 22s linear infinite;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 28px;
+
+  font: 500 10px 'DM Mono', monospace;
+  letter-spacing: 0.16em;
+
+  animation: ticker 25s linear infinite;
   will-change: transform;
 }
 
-.ticker-group {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  gap: 28px;
-  padding-right: 28px;
-
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-}
-
-.ticker-group span,
-.ticker-group i {
+.ticker-track span,
+.ticker-track i {
   flex-shrink: 0;
 }
 
@@ -458,7 +453,7 @@ h2 em {
   font-style: normal;
 }
 
-@keyframes ticker-scroll {
+@keyframes ticker {
   from {
     transform: translateX(0);
   }
@@ -468,20 +463,11 @@ h2 em {
   }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
-  .ticker {
-    padding: 12px 0;
-  }
-
-  .ticker-group {
-    gap: 14px;
-    padding-right: 14px;
+  .ticker-track {
+    gap: 1px;
     font-size: 9px;
     letter-spacing: 0.08em;
-  }
-
-  .ticker-track {
     animation-duration: 18s;
   }
 }
