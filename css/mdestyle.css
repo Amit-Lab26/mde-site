@@ -416,23 +416,42 @@ h2 em {
 .signal-two { bottom: 23%; left: 18%; transform: rotate(-20deg); }
 
 /* ============================================
-   TICKER
+   RESPONSIVE TICKER
    ============================================ */
+
 .ticker {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   overflow: hidden;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding: 18px 0;
+  padding: clamp(12px, 1.5vw, 18px) 0;
   white-space: nowrap;
+  position: relative;
 }
 
 .ticker-track {
-  display: inline-flex;
-  gap: 28px;
+  display: flex;
+  width: max-content;
+  max-width: none;
+  flex-wrap: nowrap;
+  gap: clamp(14px, 2vw, 28px);
   align-items: center;
+
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(9px, 0.75vw, 10px);
+  font-weight: 500;
+  letter-spacing: clamp(0.08em, 0.14vw, 0.16em);
+  line-height: 1.5;
+  white-space: nowrap;
+
   animation: ticker 25s linear infinite;
-  font: 500 10px 'DM Mono';
-  letter-spacing: 0.16em;
+  will-change: transform;
+}
+
+.ticker-track > * {
+  flex: 0 0 auto;
 }
 
 .ticker i {
@@ -440,6 +459,44 @@ h2 em {
   font-style: normal;
 }
 
+/* Pause movement when hovered */
+@media (hover: hover) {
+  .ticker:hover .ticker-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+  .ticker {
+    padding: 12px 0;
+  }
+
+  .ticker-track {
+    gap: 14px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    animation-duration: 20s;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+    transform: none;
+  }
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
 /* ============================================
    INTRO SECTION
    ============================================ */
