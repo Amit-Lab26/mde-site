@@ -478,6 +478,18 @@ h2 em {
     animation: none;
   }
 }
+/* Reduce the empty space below the ticker */
+.ticker + section {
+  padding-top: 60px;
+  margin-top: 0;
+}
+
+/* Mobile spacing */
+@media (max-width: 600px) {
+  .ticker + section {
+    padding-top: 40px;
+  }
+}
 /* ============================================
    INTRO SECTION
    ============================================ */
