@@ -415,49 +415,54 @@ h2 em {
 .signal-one { top: 20%; right: 17%; transform: rotate(25deg); }
 .signal-two { bottom: 23%; left: 18%; transform: rotate(-20deg); }
 
-/* TICKER */
-.ticker {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 18px 0;
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  flex-wrap: nowrap;
-  align-items: center;
-
-  animation: ticker 25s linear infinite;
-  will-change: transform;
-  backface-visibility: hidden;
-  perspective: 1000px;
-  transform: translateZ(0);
-}
-
-/* Each half group */
-.ticker-group {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.ticker-track span {
-  font: 500 10px 'DM Mono', monospace;
-  letter-spacing: 0.16em;
-  flex-shrink: 0;
-  padding-right: 28px; /* Consistent spacing after text */
-}
-
-.ticker-track i {
-  color: var(--cyan);
-  font-style: normal;
-  flex-shrink: 0;
-  padding-right: 28px; /* Consistent spacing after the symbol */
-}
+ .ticker {
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--fg);
+    padding: 18px 0;
+  }
+ 
+  /* The track holds two identical groups; moving it -50% loops seamlessly */
+  .ticker__track {
+    display: flex;
+    width: max-content;
+    animation: scroll var(--speed) linear infinite;
+  }
+ 
+  .ticker:hover .ticker__track {
+    animation-play-state: paused;
+  }
+ 
+  .ticker__group {
+    display: flex;
+    flex-shrink: 0;
+  }
+ 
+  .ticker__item {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 0 1.5rem;
+    white-space: nowrap;
+  }
+ 
+  .ticker__item::after {
+    content: "</>";
+    color: var(--accent);
+    font-family: "Consolas", monospace;
+    font-weight: 400;
+    margin-left: 3rem;
+  }
+ 
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+ 
+  @media (prefers-reduced-motion: reduce) {
+    .ticker__track { animation-duration: 60s; }
+  }
 /* ============================================
    INTRO SECTION
    ============================================ */
