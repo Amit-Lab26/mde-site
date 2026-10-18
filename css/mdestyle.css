@@ -461,10 +461,10 @@ h2 em {
     margin: 0 2.4rem;
   }
  
-  @keyframes scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-25%); }
+}
  
   @media (prefers-reduced-motion: reduce) {
     .ticker__track { animation-duration: 90s; }
