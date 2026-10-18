@@ -414,16 +414,16 @@ h2 em {
 
 .signal-one { top: 20%; right: 17%; transform: rotate(25deg); }
 .signal-two { bottom: 23%; left: 18%; transform: rotate(-20deg); }
-
- .ticker {
+.ticker {
     width: 100%;
     overflow: hidden;
-    background: var(--bg);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
     color: var(--fg);
-    padding: 18px 0;
   }
  
-  /* The track holds two identical groups; moving it -50% loops seamlessly */
+  /* Two identical groups; moving the track -50% loops seamlessly */
   .ticker__track {
     display: flex;
     width: max-content;
@@ -440,19 +440,18 @@ h2 em {
   }
  
   .ticker__item {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-family: "Space Mono", "Roboto Mono", Consolas, monospace;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
-    padding: 0 1.5rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     white-space: nowrap;
   }
  
   .ticker__item::after {
-    content: "</>";
+    content: "\2726"; /* ✦ */
     color: var(--accent);
-    font-family: "Consolas", monospace;
-    font-weight: 400;
-    margin-left: 3rem;
+    margin: 0 2.4rem;
   }
  
   @keyframes scroll {
@@ -461,7 +460,7 @@ h2 em {
   }
  
   @media (prefers-reduced-motion: reduce) {
-    .ticker__track { animation-duration: 60s; }
+    .ticker__track { animation-duration: 90s; }
   }
 /* ============================================
    INTRO SECTION
