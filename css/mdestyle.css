@@ -458,46 +458,6 @@ h2 em {
   flex-shrink: 0;
   padding-right: 28px; /* Consistent spacing after the symbol */
 }
-
-@keyframes ticker {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@media (max-width: 600px) {
-  .ticker-track span,
-  .ticker-track i {
-    padding-right: 16px;
-    font-size: 9px;
-    letter-spacing: 0.08em;
-  }
-  .ticker-track {
-    animation-duration: 18s;
-  }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .ticker-track {
-    animation: none;
-  }
-}
-
-/* Reduce the empty space below the ticker */
-.ticker + section {
-  padding-top: 60px;
-  margin-top: 0;
-}
-
-@media (max-width: 600px) {
-  .ticker + section {
-    padding-top: 40px;
-  }
-}
 /* ============================================
    INTRO SECTION
    ============================================ */
